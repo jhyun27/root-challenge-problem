@@ -16,8 +16,13 @@ public class FileReader {
 	private final static String DRIVER = "Driver";
 	private final static String TRIP = "Trip";
 	
+	private List<Driver> allDrivers;
+	
+	public FileReader() {
+		allDrivers = new ArrayList<Driver>();
+	}
+	
 	public List<Driver> read(File file) {
-		List<Driver> allDrivers = new ArrayList<Driver>();
 		try (Scanner fileScanner = new Scanner(file)) {
 			while (fileScanner.hasNextLine()) {
 				String[] lineFromFile = fileScanner.nextLine().split(" ");
@@ -34,7 +39,8 @@ public class FileReader {
 					LocalTime endTime = LocalTime.parse(lineFromFile[3], DateTimeFormatter.ofPattern("HH:mm"));
 					
 					Trip newTrip = new Trip(driverName, startTime, endTime, tripMiles);
-					// add trip to driver's history
+					Driver driver = getDriverByTrip(newTrip);
+					driver.addTripToHistory(newTrip);
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -42,6 +48,15 @@ public class FileReader {
 			e.printStackTrace();
 		}
 		return allDrivers;
+	}
+	
+	private Driver getDriverByTrip(Trip newTrip) {
+		for(Driver driver : allDrivers) {
+			if (driver.getDriverName().equalsIgnoreCase(newTrip.getDriverName())) {
+				return driver;
+			}
+		}
+		return null;
 	}
 
 }
