@@ -84,5 +84,17 @@ public class DriverUnitTest {
 		
 		Assert.assertEquals("Test Name: 42 miles @ 42 mph", actualDriverSummary);
 	}
+	
+	@Test
+	public void test_for_get_driver_summary_multiple_trips() {
+		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		driver.addTripToHistory(newTrip);
+		Trip newTrip2 = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		driver.addTripToHistory(newTrip2);
+		
+		String actualDriverSummary = driver.getDriverSummary();
+		
+		Assert.assertEquals("Test Name: 84 miles @ 42 mph", actualDriverSummary);
+	}
 
 }
