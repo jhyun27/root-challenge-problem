@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.joinroot.triplogger.commands.Trip;
+import com.joinroot.triplogger.exception.UnregisteredDriverException;
 import com.joinroot.triplogger.commands.Driver;
 
 public class FileReader {
@@ -42,7 +43,11 @@ public class FileReader {
 		} else if (command.equalsIgnoreCase(TRIP)) {
 			Trip newTrip = createTripFromFile(lineFromFile);
 			Driver driver = getDriverByTrip(newTrip);
-			driver.addTripToHistory(newTrip);
+			if (driver != null) {
+				driver.addTripToHistory(newTrip);
+			} else {
+				throw new UnregisteredDriverException("Error: Cannot add a trip for an unregistered driver.");
+			}
 		}
 	}
 	
