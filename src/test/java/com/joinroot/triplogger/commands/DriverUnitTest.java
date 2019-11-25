@@ -96,5 +96,12 @@ public class DriverUnitTest {
 		
 		Assert.assertEquals("Test Name: 84 miles @ 42 mph", actualDriverSummary);
 	}
+	
+	@Test
+	public void test_for_get_driver_summary_zero_trips() {
+		String actualDriverSummary = driver.getDriverSummary();
+		
+		Assert.assertEquals("Test Name: 0 miles", actualDriverSummary);
+	}
 
 }
