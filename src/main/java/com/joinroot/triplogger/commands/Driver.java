@@ -1,7 +1,10 @@
 package com.joinroot.triplogger.commands;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.joinroot.triplogger.commands.Trip;
 
 public class Driver {
 	
@@ -19,7 +22,23 @@ public class Driver {
 	}
 	
 	public String getDriverSummary() {
-		return null;
+		double totalMiles = 0;
+		long totalDurationMinutes = 0;
+		for (Trip trip : driverTripHistory) {
+			totalMiles += trip.getTripMiles();
+			totalDurationMinutes += Duration.between(trip.getStartTime(), trip.getEndTime()).toMinutes();
+		}
+		Long totalMilesLong = Math.round(totalMiles);
+		String totalMilesStr = totalMilesLong.toString();
+
+		double totalDurationHours = totalDurationMinutes / 60;
+		
+		double avgSpeed = totalMiles /  totalDurationHours;
+		
+		Long avgSpeedLong = Math.round(avgSpeed);
+		String avgSpeedStr = avgSpeedLong.toString();
+			
+		return driverName + ": " + totalMilesStr + " miles @ " + avgSpeedStr + " mph";
 	}
 	
 	public String getDriverName() {
