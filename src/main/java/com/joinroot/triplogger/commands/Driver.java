@@ -24,9 +24,14 @@ public class Driver {
 	}
 	
 	public String getDriverSummary() {
-		String totalMilesStr = calculateTotalMiles().toString();
+		Long totalMilesLong = calculateTotalMiles();
+		String totalMilesStr = totalMilesLong.toString();
 		String avgSpeedStr = calculateAvgSpeed().toString();
-		return driverName + ": " + totalMilesStr + " miles @ " + avgSpeedStr + " mph";
+		if (totalMilesLong > 0) {
+			return driverName + ": " + totalMilesStr + " miles @ " + avgSpeedStr + " mph";
+		} else {
+			return driverName + ": " + totalMilesStr + " miles";
+		}
 	}
 	
 	private double calculateTripSpeed(Trip trip) {
