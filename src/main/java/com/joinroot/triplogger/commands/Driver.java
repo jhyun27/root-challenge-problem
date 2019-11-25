@@ -16,9 +16,9 @@ public class Driver {
 		driverTripHistory = new ArrayList<Trip>();
 	}
 	
-
 	public void addTripToHistory(Trip newTrip) {
-		if (calculateTripSpeed(newTrip) >= 5 && calculateTripSpeed(newTrip) <= 100) {
+		double tripSpeed = calculateTripSpeed(newTrip);
+		if (tripSpeed >= 5 && tripSpeed <= 100) {
 			driverTripHistory.add(newTrip);
 		}
 	}
@@ -55,7 +55,7 @@ public class Driver {
 		for (Trip trip : driverTripHistory) {
 			totalDurationMinutes += Duration.between(trip.getStartTime(), trip.getEndTime()).toMinutes();
 		}
-		double totalDurationHours = totalDurationMinutes / 60;
+		double totalDurationHours = totalDurationMinutes / 60d;
 		double avgSpeedDouble = calculateTotalMiles() /  totalDurationHours;
 		Long avgSpeedLong = Math.round(avgSpeedDouble);
 		return avgSpeedLong;
