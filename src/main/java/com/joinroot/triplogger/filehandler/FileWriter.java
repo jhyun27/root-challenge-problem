@@ -10,7 +10,7 @@ import com.joinroot.triplogger.commands.Driver;
 
 public class FileWriter {
 	
-	private final static String FILE_NAME = "Summary.txt";
+	private final static String FILE_NAME = "Report.txt";
 	
 	public void write(List<Driver> allDrivers)  {
 		
@@ -25,7 +25,7 @@ public class FileWriter {
 			}
 			
 		} catch (IOException e) {
-			System.out.println("Error: Report Failed to Print");
+			System.out.println("Error: Failed to Print Report");
 			e.printStackTrace();
 		}
 	}

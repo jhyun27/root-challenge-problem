@@ -26,28 +26,38 @@ public class FileReader {
 		try (Scanner fileScanner = new Scanner(file)) {
 			while (fileScanner.hasNextLine()) {
 				String[] lineFromFile = fileScanner.nextLine().split(" ");
-				String command = lineFromFile[0];
-				
-				if (command.equalsIgnoreCase(DRIVER) ) {
-					String driverName = lineFromFile[1];
-					Driver newDriver = new Driver(driverName);
-					allDrivers.add(newDriver);
-				} else if (command.equalsIgnoreCase(TRIP)) {
-					String driverName = lineFromFile[1];
-					double tripMiles = Double.parseDouble(lineFromFile[4]);
-					LocalTime startTime = LocalTime.parse(lineFromFile[2], DateTimeFormatter.ofPattern("HH:mm"));
-					LocalTime endTime = LocalTime.parse(lineFromFile[3], DateTimeFormatter.ofPattern("HH:mm"));
-					
-					Trip newTrip = new Trip(driverName, startTime, endTime, tripMiles);
-					Driver driver = getDriverByTrip(newTrip);
-					driver.addTripToHistory(newTrip);
-				}
+				createNewDriverOrTrip(lineFromFile);
 			}
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: File Not Found");
 			e.printStackTrace();
 		}
 		return allDrivers;
+	}
+	
+	private void createNewDriverOrTrip(String[] lineFromFile) {
+		String command = lineFromFile[0];
+		if (command.equalsIgnoreCase(DRIVER) ) {
+			createDriverFromFile(lineFromFile[1]);
+		} else if (command.equalsIgnoreCase(TRIP)) {
+			Trip newTrip = createTripFromFile(lineFromFile);
+			Driver driver = getDriverByTrip(newTrip);
+			driver.addTripToHistory(newTrip);
+		}
+	}
+	
+	private void createDriverFromFile(String driverName) {
+		Driver newDriver = new Driver(driverName);
+		allDrivers.add(newDriver);
+	}
+	
+	private Trip createTripFromFile(String[] lineFromFile) {
+		String driverName = lineFromFile[1];
+		double tripMiles = Double.parseDouble(lineFromFile[4]);
+		LocalTime startTime = LocalTime.parse(lineFromFile[2], DateTimeFormatter.ofPattern("HH:mm"));
+		LocalTime endTime = LocalTime.parse(lineFromFile[3], DateTimeFormatter.ofPattern("HH:mm"));
+		Trip newTrip = new Trip(driverName, startTime, endTime, tripMiles);
+		return newTrip;
 	}
 	
 	private Driver getDriverByTrip(Trip newTrip) {
