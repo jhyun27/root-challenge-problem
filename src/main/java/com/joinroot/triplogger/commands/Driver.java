@@ -15,7 +15,7 @@ public class Driver {
 	
 
 	public void addTripToHistory(Trip newTrip) {
-		
+		driverTripHistory.add(newTrip);
 	}
 	
 	public String getDriverSummary() {
