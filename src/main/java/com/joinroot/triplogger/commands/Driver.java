@@ -18,7 +18,7 @@ public class Driver {
 	
 
 	public void addTripToHistory(Trip newTrip) {
-		if (calculateTripSpeed(newTrip) >= 5) {
+		if (calculateTripSpeed(newTrip) >= 5 && calculateTripSpeed(newTrip) <= 100) {
 			driverTripHistory.add(newTrip);
 		}
 	}
