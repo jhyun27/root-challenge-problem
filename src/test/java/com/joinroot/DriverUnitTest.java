@@ -36,7 +36,12 @@ public class DriverUnitTest {
 	
 	@Test
 	public void test_for_get_driver_summary() {
+		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		driver.addTripToHistory(newTrip);
 		
+		String actualDriverSummary = driver.getDriverSummary();
+		
+		Assert.assertEquals("Test Name: 42 miles @ 42 mph", actualDriverSummary);
 	}
 
 }
