@@ -67,7 +67,12 @@ public class DriverUnitTest {
 	
 	@Test
 	public void hundred_and_one_mph_trip_discarded_when_added_to_history() {
+		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, 101);
+		driver.addTripToHistory(newTrip);
 		
+		List<Trip> driverTripHistory = driver.getDriverTripHistory();
+		
+		Assert.assertEquals(0, driverTripHistory.size());
 	}
 	
 	@Test
