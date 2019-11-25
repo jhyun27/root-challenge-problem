@@ -18,13 +18,22 @@ public class Driver {
 	
 
 	public void addTripToHistory(Trip newTrip) {
-		driverTripHistory.add(newTrip);
+		if (calculateTripSpeed(newTrip) >= 5) {
+			driverTripHistory.add(newTrip);
+		}
 	}
 	
 	public String getDriverSummary() {
 		String totalMilesStr = calculateTotalMiles().toString();
 		String avgSpeedStr = calculateAvgSpeed().toString();
 		return driverName + ": " + totalMilesStr + " miles @ " + avgSpeedStr + " mph";
+	}
+	
+	private double calculateTripSpeed(Trip trip) {
+		double tripMiles = trip.getTripMiles();
+		long durationMinutes = Duration.between(trip.getStartTime(), trip.getEndTime()).toMinutes();
+		double durationHours = durationMinutes / 60d;
+		return tripMiles / durationHours;
 	}
 	
 	private Long calculateTotalMiles() {
