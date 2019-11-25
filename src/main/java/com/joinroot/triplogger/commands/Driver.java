@@ -34,14 +34,7 @@ public class Driver {
 		}
 	}
 	
-	private double calculateTripSpeed(Trip trip) {
-		double tripMiles = trip.getTripMiles();
-		long durationMinutes = Duration.between(trip.getStartTime(), trip.getEndTime()).toMinutes();
-		double durationHours = durationMinutes / 60d;
-		return tripMiles / durationHours;
-	}
-	
-	private Long calculateTotalMiles() {
+	public Long calculateTotalMiles() {
 		double totalMiles = 0;
 		for (Trip trip : driverTripHistory) {
 			totalMiles += trip.getTripMiles();
@@ -49,6 +42,14 @@ public class Driver {
 		Long totalMilesLong = Math.round(totalMiles);
 		return totalMilesLong;
 	}
+	
+	private double calculateTripSpeed(Trip trip) {
+		double tripMiles = trip.getTripMiles();
+		long durationMinutes = Duration.between(trip.getStartTime(), trip.getEndTime()).toMinutes();
+		double durationHours = durationMinutes / 60d;
+		return tripMiles / durationHours;
+	}
+	
 	
 	private Long calculateAvgSpeed() {
 		double totalDurationMinutes = 0;
