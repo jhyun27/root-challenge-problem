@@ -6,13 +6,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import com.joinroot.triplogger.commands.Driver;
+import com.joinroot.triplogger.objects.Driver;
 
 public class FileWriter {
 	
 	private final static String FILE_NAME = "Report.txt";
 	
-	public void write(List<Driver> allDrivers)  {
+	public void write(List<Driver> allDrivers) throws IOException {
 		
 		File outputFile = new File(FILE_NAME);
 		
@@ -24,9 +24,6 @@ public class FileWriter {
 				buffered.newLine();
 			}
 			
-		} catch (IOException e) {
-			System.out.println("Error: Failed to Print Report");
-			e.printStackTrace();
 		}
 	}
 

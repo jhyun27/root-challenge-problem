@@ -3,10 +3,10 @@ package com.joinroot.triplogger;
 import java.io.File;
 import java.util.List;
 
-import com.joinroot.triplogger.commands.Driver;
 import com.joinroot.triplogger.comparator.SortByMilesDesc;
 import com.joinroot.triplogger.filehandler.FileReader;
 import com.joinroot.triplogger.filehandler.FileWriter;
+import com.joinroot.triplogger.objects.Driver;
 
 public class TripLogger {
 
@@ -19,10 +19,23 @@ public class TripLogger {
 		writer = new FileWriter();
 		
 		File file = new File(FILENAME);
+		List<Driver> allDrivers;
 		
-		List<Driver> allDrivers = reader.read(file);
+		try {
+			allDrivers = reader.read(file);
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+			throw new RuntimeException(e);
+		}
+		
 		allDrivers.sort(new SortByMilesDesc());
-		writer.write(allDrivers);
+		
+		try {
+			writer.write(allDrivers);
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+			throw new RuntimeException(e);
+		}
 		
 //		if (args.length > 0) {
 //			System.out.println(args[0]);

@@ -1,4 +1,4 @@
-package com.joinroot.triplogger.commands;
+package com.joinroot.triplogger.objects;
 
 import java.time.LocalTime;
 

@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.joinroot.triplogger.commands.Trip;
 import com.joinroot.triplogger.exception.UnregisteredDriverException;
-import com.joinroot.triplogger.commands.Driver;
+import com.joinroot.triplogger.objects.Driver;
+import com.joinroot.triplogger.objects.Trip;
 
 public class FileReader {
 
@@ -23,15 +23,12 @@ public class FileReader {
 		allDrivers = new ArrayList<Driver>();
 	}
 	
-	public List<Driver> read(File file) {
+	public List<Driver> read(File file) throws FileNotFoundException {
 		try (Scanner fileScanner = new Scanner(file)) {
 			while (fileScanner.hasNextLine()) {
 				String[] lineFromFile = fileScanner.nextLine().split(" ");
 				createNewDriverOrTrip(lineFromFile);
 			}
-		} catch (FileNotFoundException e) {
-			System.out.println("Error: File Not Found");
-			e.printStackTrace();
 		}
 		return allDrivers;
 	}
