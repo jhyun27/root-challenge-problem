@@ -29,17 +29,19 @@ I also created a file called rootSampleInput.txt with the sample input from the 
 	1. FileWriter is generating the expected file
 	2. Output sorted by most miles driven to least.
 
-Upon further evaluation, I realized that the comparator should also be tested with unit testing and added those.
+Upon further evaluation, I also added unit testing for the SortByMilesDesc comparator class.
+
+### FileReader Class
+FileReader has one public read method that reads each line of the file in a try block and throws a FileNotFound exception to display an error message from the main method in the TripLoggerApp, and translates the input into the proper object (Driver or Trip).
+
+### FileWriter Class
+
 
 ### Driver Class
 The "Driver" command in the input file creates a new Driver object. Each driver must have a unique name. I debated whether or not to add a unique Driver ID, but decided not to as the example given in the problem statement seemed to use first names as unique identifiers. Each driver also has an ArrayList of Trip(s) that act as his/her trip history.
 
 ### Trip Class
 The "Trip" command in the input file creates a new Trip object. Each Trip must have a start time (LocalTime), end time (LocalTime), and trip miles. These values are parsed in the FileReader in order to make a new Trip. This trip is then added to a specific driver's history through the DriverLog.
-
-### FileReader Class
-
-### FileWriter Class
 
 ### Encapsulation
 I eventually decided to further encapsulate the Driver class from my FileReader class by incorporating a DriverLog which would hold the list of all registered drivers.
