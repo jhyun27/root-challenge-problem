@@ -17,7 +17,7 @@ public class TripLoggerApp {
 			
 			FileReader reader = new FileReader();
 			FileWriter writer = new FileWriter();
-			List<Driver> allDrivers;
+			List<Driver> allDrivers = null;
 			try {
 				allDrivers = reader.read(file);
 			} catch (Exception e) {
