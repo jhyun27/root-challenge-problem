@@ -7,9 +7,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
+import com.joinroot.triplogger.Driver;
 import com.joinroot.triplogger.DriverLog;
-import com.joinroot.triplogger.objects.Driver;
-import com.joinroot.triplogger.objects.Trip;
+import com.joinroot.triplogger.Trip;
 
 public class FileReader {
 

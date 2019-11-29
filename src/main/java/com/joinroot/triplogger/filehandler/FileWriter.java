@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import com.joinroot.triplogger.objects.Driver;
+import com.joinroot.triplogger.Driver;
 
 public class FileWriter {
 	

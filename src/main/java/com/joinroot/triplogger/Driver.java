@@ -1,10 +1,10 @@
-package com.joinroot.triplogger.objects;
+package com.joinroot.triplogger;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.joinroot.triplogger.objects.Trip;
+import com.joinroot.triplogger.Trip;
 
 public class Driver {
 	

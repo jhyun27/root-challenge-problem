@@ -7,8 +7,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.joinroot.triplogger.objects.Driver;
-import com.joinroot.triplogger.objects.Trip;
+import com.joinroot.triplogger.Driver;
+import com.joinroot.triplogger.Trip;
 
 public class DriverUnitTest {
 	

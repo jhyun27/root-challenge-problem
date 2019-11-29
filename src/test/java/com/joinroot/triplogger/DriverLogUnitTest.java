@@ -6,8 +6,6 @@ import java.util.List;
 import org.junit.*;
 
 import com.joinroot.triplogger.exception.UnregisteredDriverException;
-import com.joinroot.triplogger.objects.Driver;
-import com.joinroot.triplogger.objects.Trip;
 
 public class DriverLogUnitTest {
 	

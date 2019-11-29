@@ -6,7 +6,6 @@ import java.util.List;
 import com.joinroot.triplogger.comparator.SortByMilesDesc;
 import com.joinroot.triplogger.filehandler.FileReader;
 import com.joinroot.triplogger.filehandler.FileWriter;
-import com.joinroot.triplogger.objects.Driver;
 
 public class TripLoggerApp {
 	

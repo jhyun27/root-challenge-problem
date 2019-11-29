@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.joinroot.triplogger.exception.UnregisteredDriverException;
-import com.joinroot.triplogger.objects.Driver;
-import com.joinroot.triplogger.objects.Trip;
 
 public class DriverLog {
 	

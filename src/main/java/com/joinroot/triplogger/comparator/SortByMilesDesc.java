@@ -2,7 +2,7 @@ package com.joinroot.triplogger.comparator;
 
 import java.util.Comparator;
 
-import com.joinroot.triplogger.objects.Driver;
+import com.joinroot.triplogger.Driver;
 
 public class SortByMilesDesc implements Comparator<Driver>{
 
