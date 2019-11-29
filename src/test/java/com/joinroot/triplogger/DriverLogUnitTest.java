@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.junit.*;
 
+import com.joinroot.triplogger.exception.UnregisteredDriverException;
 import com.joinroot.triplogger.objects.Driver;
 import com.joinroot.triplogger.objects.Trip;
 
@@ -46,9 +47,10 @@ public class DriverLogUnitTest {
 		Assert.assertEquals(1, driverTripHistory.size());
 	}
 	
-	@Test
-	public void add_trip_to_driver_history_does_not_add_trip_to_unregistered_driver() {
-		
+	@Test(expected = UnregisteredDriverException.class)
+	public void add_trip_to_unregistered_driver_throws_exception() {
+		Trip trip = new Trip(START_TIME, END_TIME, TRIP_MILES);
+		log.addTripToDriverHistory(DRIVER_NAME, trip);
 	}
 
 }

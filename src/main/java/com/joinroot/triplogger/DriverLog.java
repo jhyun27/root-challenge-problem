@@ -23,7 +23,7 @@ private List<Driver> allDrivers;
 	
 	public void addTripToDriverHistory(String driverName, Trip trip) {
 		Driver driver = getDriverByName(driverName);
-		if (driver.getDriverName() == driverName) {
+		if (driver != null) {
 			driver.addTripToHistory(trip);
 		} else {
 			throw new UnregisteredDriverException("Error: Cannot add a trip for an unregistered driver.");
