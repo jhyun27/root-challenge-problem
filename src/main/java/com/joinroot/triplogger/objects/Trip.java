@@ -4,24 +4,16 @@ import java.time.LocalTime;
 
 public class Trip {
 	
-	private String driverName;
 	private LocalTime startTime;
 	private LocalTime endTime;
 	private double tripMiles;
 	
-	public Trip(String driverName, LocalTime startTime, LocalTime endTime, double tripMiles) {
-		this.driverName = driverName;
+	public Trip(LocalTime startTime, LocalTime endTime, double tripMiles) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.tripMiles = tripMiles;
 	}
 	
-	public String getDriverName() {
-		return driverName;
-	}
-	public void setDriverName(String driverName) {
-		this.driverName = driverName;
-	}
 	public LocalTime getStartTime() {
 		return startTime;
 	}

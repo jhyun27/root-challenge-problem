@@ -26,7 +26,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void forty_two_mph_trip_added_when_added_to_history() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		Trip newTrip = new Trip(START_TIME, END_TIME, TRIP_MILES);
 		driver.addTripToHistory(newTrip);
 		
 		List<Trip> driverTripHistory = driver.getDriverTripHistory();
@@ -36,7 +36,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void five_mph_trip_added_when_added_to_history() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, 5);
+		Trip newTrip = new Trip(START_TIME, END_TIME, 5);
 		driver.addTripToHistory(newTrip);
 		
 		List<Trip> driverTripHistory = driver.getDriverTripHistory();
@@ -46,7 +46,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void four_mph_trip_discarded_when_added_to_history() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, 4);
+		Trip newTrip = new Trip(START_TIME, END_TIME, 4);
 		driver.addTripToHistory(newTrip);
 		
 		List<Trip> driverTripHistory = driver.getDriverTripHistory();
@@ -56,7 +56,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void hundred_mph_trip_added_when_added_to_history() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, 100);
+		Trip newTrip = new Trip(START_TIME, END_TIME, 100);
 		driver.addTripToHistory(newTrip);
 		
 		List<Trip> driverTripHistory = driver.getDriverTripHistory();
@@ -67,7 +67,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void hundred_and_one_mph_trip_discarded_when_added_to_history() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, 101);
+		Trip newTrip = new Trip(START_TIME, END_TIME, 101);
 		driver.addTripToHistory(newTrip);
 		
 		List<Trip> driverTripHistory = driver.getDriverTripHistory();
@@ -77,7 +77,7 @@ public class DriverUnitTest {
 	
 	@Test
 	public void test_for_get_driver_summary() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		Trip newTrip = new Trip(START_TIME, END_TIME, TRIP_MILES);
 		driver.addTripToHistory(newTrip);
 		
 		String actualDriverSummary = driver.getDriverSummary();
@@ -87,9 +87,9 @@ public class DriverUnitTest {
 	
 	@Test
 	public void test_for_get_driver_summary_multiple_trips() {
-		Trip newTrip = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		Trip newTrip = new Trip(START_TIME, END_TIME, TRIP_MILES);
 		driver.addTripToHistory(newTrip);
-		Trip newTrip2 = new Trip(DRIVER_NAME, START_TIME, END_TIME, TRIP_MILES);
+		Trip newTrip2 = new Trip(START_TIME, END_TIME, TRIP_MILES);
 		driver.addTripToHistory(newTrip2);
 		
 		String actualDriverSummary = driver.getDriverSummary();

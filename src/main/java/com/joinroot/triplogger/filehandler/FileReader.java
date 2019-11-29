@@ -4,11 +4,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import com.joinroot.triplogger.exception.UnregisteredDriverException;
+import com.joinroot.triplogger.DriverLog;
 import com.joinroot.triplogger.objects.Driver;
 import com.joinroot.triplogger.objects.Trip;
 
@@ -17,10 +16,10 @@ public class FileReader {
 	private final static String DRIVER = "Driver";
 	private final static String TRIP = "Trip";
 	
-	private List<Driver> allDrivers;
+	private DriverLog log;
 	
 	public FileReader() {
-		allDrivers = new ArrayList<Driver>();
+		log = new DriverLog();
 	}
 	
 	public List<Driver> read(File file) throws FileNotFoundException {
@@ -30,45 +29,27 @@ public class FileReader {
 				createNewDriverOrTrip(lineFromFile);
 			}
 		}
-		return allDrivers;
+		return log.getAllDrivers();
 	}
 	
 	private void createNewDriverOrTrip(String[] lineFromFile) {
 		String command = lineFromFile[0];
+		String driverName = lineFromFile[1];
 		if (command.equalsIgnoreCase(DRIVER) ) {
-			createDriverFromFile(lineFromFile[1]);
+			Driver newDriver = new Driver(driverName);
+			log.registerNewDriver(newDriver);
 		} else if (command.equalsIgnoreCase(TRIP)) {
 			Trip newTrip = createTripFromFile(lineFromFile);
-			Driver driver = getDriverByTrip(newTrip);
-			if (driver != null) {
-				driver.addTripToHistory(newTrip);
-			} else {
-				throw new UnregisteredDriverException("Error: Cannot add a trip for an unregistered driver.");
-			}
+			log.addTripToDriverHistory(driverName, newTrip);
 		}
-	}
-	
-	private void createDriverFromFile(String driverName) {
-		Driver newDriver = new Driver(driverName);
-		allDrivers.add(newDriver);
 	}
 	
 	private Trip createTripFromFile(String[] lineFromFile) {
-		String driverName = lineFromFile[1];
 		double tripMiles = Double.parseDouble(lineFromFile[4]);
 		LocalTime startTime = LocalTime.parse(lineFromFile[2], DateTimeFormatter.ofPattern("HH:mm"));
 		LocalTime endTime = LocalTime.parse(lineFromFile[3], DateTimeFormatter.ofPattern("HH:mm"));
-		Trip newTrip = new Trip(driverName, startTime, endTime, tripMiles);
+		Trip newTrip = new Trip(startTime, endTime, tripMiles);
 		return newTrip;
-	}
-	
-	private Driver getDriverByTrip(Trip newTrip) {
-		for(Driver driver : allDrivers) {
-			if (driver.getDriverName().equalsIgnoreCase(newTrip.getDriverName())) {
-				return driver;
-			}
-		}
-		return null;
 	}
 
 }

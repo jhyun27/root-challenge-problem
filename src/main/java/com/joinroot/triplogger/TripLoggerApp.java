@@ -8,7 +8,7 @@ import com.joinroot.triplogger.filehandler.FileReader;
 import com.joinroot.triplogger.filehandler.FileWriter;
 import com.joinroot.triplogger.objects.Driver;
 
-public class TripLogger {
+public class TripLoggerApp {
 
 	private static FileReader reader;
 	private static FileWriter writer;
@@ -19,8 +19,8 @@ public class TripLogger {
 		writer = new FileWriter();
 		
 		File file = new File(FILENAME);
-		List<Driver> allDrivers;
 		
+		List<Driver> allDrivers;
 		try {
 			allDrivers = reader.read(file);
 		} catch (Exception e) {
@@ -32,15 +32,15 @@ public class TripLogger {
 		
 		try {
 			writer.write(allDrivers);
+			System.out.println("Report.txt was successfully generated");
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());
 			throw new RuntimeException(e);
 		}
 		
 //		if (args.length > 0) {
-//			System.out.println(args[0]);
 //			String fileName = args[0];
-//			file = new File(fileName);
+//			File file = new File(fileName);
 //		}
 		
 	}
