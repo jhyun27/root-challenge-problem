@@ -20,6 +20,16 @@ public class DriverLogUnitTest {
 	}
 	
 	@Test
+	public void register_new_driver_adds_unregistered_driver() {
+		Driver driver = new Driver(DRIVER_NAME);
+		log.registerNewDriver(driver);
+		
+		List<Driver> allDrivers = log.getAllDrivers();
+		
+		Assert.assertEquals(1, allDrivers.size());
+	}
+	
+	@Test
 	public void register_new_driver_does_not_register_existing_driver() {
 		Driver driver = new Driver(DRIVER_NAME);
 		log.registerNewDriver(driver);
