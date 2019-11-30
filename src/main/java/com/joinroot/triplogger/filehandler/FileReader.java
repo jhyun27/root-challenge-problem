@@ -22,14 +22,14 @@ public class FileReader {
 		log = new DriverLog();
 	}
 	
-	public List<Driver> read(File file) throws FileNotFoundException {
+	public List<String> read(File file) throws FileNotFoundException {
 		try (Scanner fileScanner = new Scanner(file)) {
 			while (fileScanner.hasNextLine()) {
 				String[] lineFromFile = fileScanner.nextLine().split(" ");
 				createNewDriverOrTrip(lineFromFile);
 			}
 		}
-		return log.getAllDrivers();
+		return log.getAllDriverSummaries();
 	}
 	
 	private void createNewDriverOrTrip(String[] lineFromFile) {

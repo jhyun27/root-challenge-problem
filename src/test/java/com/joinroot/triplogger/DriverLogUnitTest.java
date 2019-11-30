@@ -52,5 +52,23 @@ public class DriverLogUnitTest {
 		
 		Assert.assertEquals(1, driverTripHistory.size());
 	}
+	
+	@Test
+	public void get_all_driver_summaries() {
+		Driver driver = new Driver(DRIVER_NAME);
+		log.registerNewDriver(driver);
+		Trip trip = new Trip(START_TIME, END_TIME, TRIP_MILES);
+		log.addTripToDriverHistory(DRIVER_NAME, trip);
+		
+		Driver driver2 = new Driver("Test Name 2");
+		log.registerNewDriver(driver2);
+		Trip trip2 = new Trip(START_TIME, END_TIME, 50);
+		log.addTripToDriverHistory("Test Name 2", trip2);
+		
+		List<String> allDriverSummaries = log.getAllDriverSummaries();
+		
+		Assert.assertEquals("Test Name 2: 50 miles @ 50 mph", allDriverSummaries.get(0));
+		Assert.assertEquals("Test Name: 42 miles @ 42 mph", allDriverSummaries.get(1));
+	}
 
 }

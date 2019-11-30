@@ -3,6 +3,8 @@ package com.joinroot.triplogger;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.joinroot.triplogger.comparator.SortByMilesDesc;
+
 public class DriverLog {
 	
 private List<Driver> allDrivers;
@@ -22,6 +24,15 @@ private List<Driver> allDrivers;
 		if (driver != null) {
 			driver.addTripToHistory(trip);
 		} 
+	}
+	
+	public List<String> getAllDriverSummaries() {
+		allDrivers.sort(new SortByMilesDesc());
+		List<String> allDriverSummaries = new ArrayList<String>();
+		for (Driver driver : allDrivers) {
+			allDriverSummaries.add(driver.getDriverSummary());
+		}
+		return allDriverSummaries;
 	}
 	
 	private Driver getDriverByName(String name) {

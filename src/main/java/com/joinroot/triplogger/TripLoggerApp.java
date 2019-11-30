@@ -17,18 +17,18 @@ public class TripLoggerApp {
 			
 			FileReader reader = new FileReader();
 			FileWriter writer = new FileWriter();
-			List<Driver> allDrivers = null;
+			List<String> allDriverSummaries = null;
 			try {
-				allDrivers = reader.read(file);
+				allDriverSummaries = reader.read(file);
 			} catch (Exception e) {
 				System.out.println("Error: " + e.getMessage());
 				throw new RuntimeException(e);
 			}
 			
-			allDrivers.sort(new SortByMilesDesc());
+//			allDriverSummaries.sort(new SortByMilesDesc());
 			
 			try {
-				writer.write(allDrivers);
+				writer.write(allDriverSummaries);
 				System.out.println("Report.txt was successfully generated");
 			} catch (Exception e) {
 				System.out.println("Error: " + e.getMessage());
