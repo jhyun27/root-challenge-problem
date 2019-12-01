@@ -14,7 +14,7 @@ Execution successful if the following message is received:
 
 ## Design Approach
 
-My initial design included a Trip, Driver, FileReader, FileWriter, and main class from which the application would run. In order to visualize how these classes would interact, I started by creating skeletons of each class. I then used TDD in order to achieve the parameters outlined in the problem statement. Once my application was successfully writing out to a file, I added a comparator to sort the final report by miles (descending). I also ended up adding a DriverLog class and tests in order to further encapsulate my Driver from my FileReader and FileWriter.
+My initial design included a Trip, Driver, FileReader, FileWriter, and main class from which the application would run. In order to visualize how these classes would interact, I started by creating skeletons of each class. I then used TDD in order to achieve the parameters outlined in the problem statement. Once my application was successfully writing out to a file, I added a comparator to sort the final report by miles (descending). I also ended up adding a DriverLog class and tests in order to encapsulate my Driver class.
 
 ## Testing
 Unit tests was determined by the parameters outlined in the problem statement such as:
@@ -59,15 +59,12 @@ This class is also responsible for generating and sorting the list of driver sum
 ## Driver Class
 The "Driver" command in the input file creates a new Driver object. Each driver must have a unique name. I debated whether or not to add a unique Driver ID, but decided not to as the example given in the problem statement seemed to use first names as unique identifiers. Each driver also has an ArrayList of Trip(s) that act as his/her trip history.
 
-The Driver class also has multiple methods to calculate total miles and average speeds for their trip history. calculateAvgSpeed() and calculateTotalMiles() are used to generate driver summaries. calculateTotalMiles is also used in the comparator to SortByMilesDes(). And calculateTripSpeed is used to determine whether the trip was between 5-100 mph before logging.
+The Driver class also has multiple methods to calculate total miles and average speeds for their trip history. `calculateAvgSpeed()` and `calculateTotalMiles()` are used to generate driver summaries. `calculateTotalMiles()` is also used in the comparator `SortByMilesDes()`. And `calculateTripSpeed()` is used to determine whether the trip is between 5-100 mph before logging.
 
-Calculations are done using the primitive type double, and then rounded into the Long wrapper class when needed using Math.round(). The Long wrapper class was chosen for use of the .toString() method.
+Calculations are done using the primitive type double, and then rounded into the Long wrapper class when needed using `Math.round()`. The Long wrapper class was chosen for use of the `.toString()` method.
 
 ## Trip Class
 The "Trip" command in the input file creates a new Trip object. Each Trip must have a start time (LocalTime), end time (LocalTime), and trip miles. These values are parsed in the FileReader in order to make a new Trip. This trip is then added to a specific driver's history through the DriverLog.
-
-## Encapsulation
-I eventually decided to further encapsulate the Driver class from my FileReader and FileWriter classes by incorporating a DriverLog which holds the list of all registered drivers.
 
 ## Exception Handling
 I originally included an UnregisteredDriverException that would be thrown when a trip was added for an unregistered driver. I ultimately decided to remove this exception, because I did not think that the entire application should abort when these errors occurred. Instead, I decided that the application would continue but not log the trip.
