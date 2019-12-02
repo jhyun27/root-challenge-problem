@@ -11,9 +11,9 @@ public class TripLoggerApp {
 	
 	public static void main(String[] args) {
 		
-//		if (args.length > 0) {
-//			String fileName = args[0];
-			File file = new File("rootSampleInput.txt");
+		if (args.length > 0) {
+			String fileName = args[0];
+			File file = new File(fileName);
 			
 			FileReader reader = new FileReader();
 			FileWriter writer = new FileWriter();
@@ -24,9 +24,7 @@ public class TripLoggerApp {
 				System.out.println("Error: " + e.getMessage());
 				throw new RuntimeException(e);
 			}
-			
-//			allDriverSummaries.sort(new SortByMilesDesc());
-			
+						
 			try {
 				writer.write(allDriverSummaries);
 				System.out.println("Report.txt was successfully generated");
@@ -34,7 +32,7 @@ public class TripLoggerApp {
 				System.out.println("Error: " + e.getMessage());
 				throw new RuntimeException(e);
 			}
-//		}
+		}
 		
 	}
 

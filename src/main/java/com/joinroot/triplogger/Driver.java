@@ -50,7 +50,6 @@ public class Driver {
 		return tripMiles / durationHours;
 	}
 	
-	
 	private Long calculateAvgSpeed() {
 		double totalDurationMinutes = 0;
 		for (Trip trip : driverTripHistory) {
@@ -66,16 +65,8 @@ public class Driver {
 		return driverName;
 	}
 
-	public void setDriverName(String driverName) {
-		this.driverName = driverName;
-	}
-
 	public List<Trip> getDriverTripHistory() {
 		return driverTripHistory;
-	}
-
-	public void setDriverTripHistory(List<Trip> driverTripHistory) {
-		this.driverTripHistory = driverTripHistory;
 	}
 
 }

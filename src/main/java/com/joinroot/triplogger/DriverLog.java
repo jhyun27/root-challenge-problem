@@ -48,8 +48,4 @@ private List<Driver> allDrivers;
 		return allDrivers;
 	}
 
-	public void setAllDrivers(List<Driver> allDrivers) {
-		this.allDrivers = allDrivers;
-	}
-
 }

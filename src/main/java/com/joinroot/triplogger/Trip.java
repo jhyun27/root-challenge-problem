@@ -17,20 +17,13 @@ public class Trip {
 	public LocalTime getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(LocalTime startTime) {
-		this.startTime = startTime;
-	}
+
 	public LocalTime getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(LocalTime endTime) {
-		this.endTime = endTime;
-	}
+	
 	public double getTripMiles() {
 		return tripMiles;
-	}
-	public void setTripMiles(double tripMiles) {
-		this.tripMiles = tripMiles;
 	}
 
 }
